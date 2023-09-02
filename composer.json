@@ -1,0 +1,21 @@
+{
+  "name": "untek-framework/rest-api-test",
+  "type": "extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zn Developer",
+      "email": "zndev@ya.ru"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "untek-framework/web-test": "0.1.x-dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Untek\\Framework\\\\": "src",
+      "Untek\\Framework\\\\Tests\\": "tests"
+    }
+  }
+}
