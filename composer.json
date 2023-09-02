@@ -14,8 +14,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Untek\\Framework\\\\": "src",
-      "Untek\\Framework\\\\Tests\\": "tests"
+      "Untek\\Framework\\RestApiTest\\": "src",
+      "Untek\\Framework\\RestApiTest\\Tests\\": "tests"
     }
   }
 }
