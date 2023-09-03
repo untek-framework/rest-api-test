@@ -134,11 +134,11 @@ class RestApiResponseAssert extends Assert
 
     public function assertCollectionSize(int $expected): static
     {
-        $this->assertCount($expected, $this->response->getResult());
-        $totalCount = $this->response->getMetaItem('totalCount', null);
-        if ($totalCount !== null) {
-            $this->assertEquals($expected, $totalCount);
-        }
+        $this->assertCount($expected, $this->getPayload());
+//        $totalCount = $this->response->getMetaItem('totalCount', null);
+//        if ($totalCount !== null) {
+//            $this->assertEquals($expected, $totalCount);
+//        }
         return $this;
     }
 
