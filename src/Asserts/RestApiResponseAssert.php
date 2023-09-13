@@ -3,6 +3,7 @@
 namespace Untek\Framework\RestApiTest\Asserts;
 
 use PHPUnit\Framework\Assert;
+use PHPUnit\Framework\ExpectationFailedException;
 use Symfony\Component\HttpFoundation\Response;
 use Untek\Core\Arr\Helpers\ArrayHelper;
 use Untek\Framework\Rpc\Domain\Enums\RpcErrorCodeEnum;
@@ -43,6 +44,15 @@ class RestApiResponseAssert extends Assert
         $actual = $this->response->headers->get($name);
 //        dd($name, $actual);
         $this->assertEquals($expected, $actual);
+        return $this;
+    }
+
+    public function assertPathWithRegexp($exp, string $path = null): static
+    {
+        $actual = $this->getValueFromPath($path);
+        if(!preg_match("/$exp/u", $actual)) {
+            throw new ExpectationFailedException('Not valid value!');
+        }
         return $this;
     }
 
