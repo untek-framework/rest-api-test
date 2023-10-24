@@ -63,6 +63,16 @@ class RestApiResponseAssert extends Assert
         return $this;
     }
 
+    public function assertHasPath(string $path): static
+    {
+        $responseBody = $this->getPayload();
+        $has = ArrayHelper::has($responseBody, $path);
+        if(!$has) {
+            throw new ExpectationFailedException("Path \"{$path}\" not found.");
+        }
+        return $actual;
+    }
+
     public function assertData(array $data): static
     {
         $responseBody = $this->getPayload();
