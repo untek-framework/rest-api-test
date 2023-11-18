@@ -253,12 +253,11 @@ class RestApiResponseAssert extends Assert
 
     public function assertUnprocessableEntityErrors(array $errors): static
     {
-        $this->assertIsError();
-        $this->assertErrorMessage('Parameter validation error');
-        $this->assertStatus(RpcErrorCodeEnum::SERVER_ERROR_INVALID_PARAMS);
+        $this->assertStatus(422);
+        $responseBody = $this->getPayload();
         $this->assertEquals(
             $this->unprocessableEntityErrorsToFlat($errors),
-            $this->unprocessableEntityErrorsToFlat($this->response->getError()['data'])
+            $this->unprocessableEntityErrorsToFlat($responseBody['errors'])
         );
         return $this;
     }
