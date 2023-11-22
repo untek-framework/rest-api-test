@@ -17,4 +17,9 @@ abstract class BaseRestApiTestCase extends TestCase
     {
         return $this->getRequestImitator()->sendJsonRequest($uri, $method, $data);
     }
+
+    protected function printResponceData(Response $response) {
+        $data = json_decode($response->getContent(), true);
+        dd($data);
+    }
 }
