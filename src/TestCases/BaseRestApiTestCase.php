@@ -19,7 +19,11 @@ abstract class BaseRestApiTestCase extends TestCase
     }
 
     protected function printResponceData(Response $response) {
-        $data = json_decode($response->getContent(), true);
+        $data = $this->extractData($response);
         dd($data);
+    }
+
+    protected function extractData(Response $response) {
+        return json_decode($response->getContent(), true);
     }
 }
