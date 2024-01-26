@@ -182,8 +182,22 @@ class RestApiResponseAssert extends Assert
 
     public function assertCollectionIsEmpty(): static
     {
-        $this->assertIsResult();
-        $this->assertCollectionSize(0);
+//        $this->assertIsSuccess();
+        $this->assertEmpty($this->getPayload());
+        return $this;
+    }
+
+    public function assertCollectionIsNotEmpty(): static
+    {
+//        $this->assertIsSuccess();
+        $this->assertNotEmpty($this->getPayload());
+        return $this;
+    }
+
+    public function assertIsSuccess($message = 'Response is not success status code.'): static
+    {
+        $statusCode = $this->response->getStatusCode();
+        $this->assertTrue(200 <= $statusCode && $statusCode < 300, $message);
         return $this;
     }
 
