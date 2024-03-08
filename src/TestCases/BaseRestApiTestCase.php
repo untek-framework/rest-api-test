@@ -26,4 +26,12 @@ abstract class BaseRestApiTestCase extends TestCase
     protected function extractData(Response $response) {
         return json_decode($response->getContent(), true);
     }
+
+    protected function extractHeaders(Response $response) {
+        $headers = [];
+        foreach ($response->headers->allPreserveCase() as $name => $value) {
+            $headers[$name] = $value[0];
+        }
+        return $headers;
+    }
 }
