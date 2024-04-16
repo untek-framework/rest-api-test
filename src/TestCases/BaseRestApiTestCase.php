@@ -33,7 +33,10 @@ abstract class BaseRestApiTestCase extends TestCase
     }
 
     protected function extractData(Response $response) {
-        return json_decode($response->getContent(), true);
+        if($response->headers->get('Content-Type') == 'application/json') {
+            return json_decode($response->getContent(), true);
+        }
+        return $response->getContent();
     }
 
     protected function extractHeaders(Response $response) {
