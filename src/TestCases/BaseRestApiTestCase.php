@@ -19,17 +19,18 @@ abstract class BaseRestApiTestCase extends TestCase
         return $this->getRequestImitator()->sendJsonRequest($uri, $method, $data);
     }
 
-    protected function printResponceData(Response $response, string $format = 'php') {
+    protected function printResponceData(Response $response, ?string $format = 'php') {
         $data = $this->extractData($response);
         if($format == 'php') {
             $data = (new Store('php'))->encode($data);
         } elseif($format == 'json') {
             $data = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        } elseif($format == null) {
+            $data = print_r($data, true);
         }
         echo $data;
         echo PHP_EOL;
         exit();
-//        dd($data);
     }
 
     protected function extractData(Response $response) {
