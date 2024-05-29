@@ -20,6 +20,10 @@ abstract class BaseRestApiTestCase extends TestCase
     }
 
     protected function printResponceData(Response $response, ?string $format = 'php') {
+        $this->printResponseData($response, $format);
+    }
+
+    protected function printResponseData(Response $response, ?string $format = 'php') {
         $data = $this->extractData($response);
         if($format == 'php') {
             $data = (new Store('php'))->encode($data);
