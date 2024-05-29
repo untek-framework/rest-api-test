@@ -19,6 +19,12 @@ abstract class BaseRestApiTestCase extends TestCase
         return $this->getRequestImitator()->sendJsonRequest($uri, $method, $data);
     }
 
+    /**
+     * @param Response $response
+     * @param string|null $format
+     * @deprecated
+     * @see printResponseData
+     */
     protected function printResponceData(Response $response, ?string $format = 'php') {
         $this->printResponseData($response, $format);
     }
