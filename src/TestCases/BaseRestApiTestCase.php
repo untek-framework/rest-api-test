@@ -3,6 +3,7 @@
 namespace Untek\Framework\RestApiTest\TestCases;
 
 use Untek\Component\FormatAdapter\Store;
+use Untek\Core\Arr\Helpers\ArrayHelper;
 use Untek\Framework\WebTest\Libs\JsonImitationRequest;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,18 +20,11 @@ abstract class BaseRestApiTestCase extends TestCase
         return $this->getRequestImitator()->sendJsonRequest($uri, $method, $data);
     }
 
-    /**
-     * @param Response $response
-     * @param string|null $format
-     * @deprecated
-     * @see printResponseData
-     */
-    protected function printResponceData(Response $response, ?string $format = 'php') {
-        $this->printResponseData($response, $format);
-    }
-
-    protected function printResponseData(Response $response, ?string $format = 'php') {
+    protected function printResponseData(Response $response, ?string $path = null, ?string $format = 'php') {
         $data = $this->extractData($response);
+        if($path) {
+            $data = ArrayHelper::getValue($data, $path);
+        }
         $this->printData($data, $format);
     }
 
