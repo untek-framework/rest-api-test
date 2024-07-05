@@ -15,9 +15,9 @@ class RestApiResponsePathAssert
         $this->assert = new \Untek\Framework\RestApiTest\Asserts\Assert();
     }
 
-    public function assertEqual($expected): static
+    public function assertEquals($expected): static
     {
-        $this->assert->assertEqual($expected, $this->actual);
+        $this->assert->assertEquals($expected, $this->actual);
         return $this;
     }
 
