@@ -35,6 +35,11 @@ class RestApiResponsePathAssert
         return $this;
     }
 
+    public function assertNear($expected, $diff = 1): static
+    {
+        return $this->assertRange($expected - $diff, $expected + $diff);
+    }
+
     public function assertRange($min, $max): static
     {
         $this->assert->assertLessThanOrEqual($max, $this->actual);
