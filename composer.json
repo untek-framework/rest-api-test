@@ -10,7 +10,7 @@
   ],
   "minimum-stability": "dev",
   "require": {
-    "untek-framework/web-test": "0.1.x-dev"
+    "untek-framework/web-test": "0.2.x-dev"
   },
   "autoload": {
     "psr-4": {
