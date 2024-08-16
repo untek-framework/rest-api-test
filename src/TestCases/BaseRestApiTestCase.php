@@ -8,6 +8,8 @@ use Untek\Framework\WebTest\Libs\JsonImitationRequest;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Response;
 
+DeprecateHelper::hardThrow();
+
 abstract class BaseRestApiTestCase extends TestCase
 {
     protected function getRequestImitator(): JsonImitationRequest
